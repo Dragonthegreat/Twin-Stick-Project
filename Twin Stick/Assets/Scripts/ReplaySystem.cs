@@ -22,21 +22,23 @@ public class ReplaySystem : MonoBehaviour {
 		Record ();
 	}
 
-	void PlayBack () {
+	public void PlayBack () {
 		rigidBody.isKinematic = true;
+		Debug.Log ("Is Kinematic = True");
 		int frame = Time.frameCount % bufferFrames;
-		Debug.Log ("Reading to frame: " + frame);
+		//Debug.Log ("Reading from frame: " + frame + " transform.position: " + transform.position);
 		transform.position = keyFrame [frame].objectPosition;
 		transform.rotation = keyFrame [frame].objectRotation;
 	}
 
 
-	void Record ()
+	public void Record ()
 	{
 		rigidBody.isKinematic = false;
+		Debug.Log ("Is Kinematic = false");
 		int frame = Time.frameCount % bufferFrames;
 		float time = Time.time;
-		Debug.Log ("Writing to frame: " + frame);
+		//Debug.Log ("Writing to frame: " + frame + " time: " + time + " transform.position: " + transform.position);
 		keyFrame [frame] = new MyKeyFrame (time, transform.position, transform.rotation);
 	}
 }
