@@ -22,9 +22,9 @@ public class GameManager : MonoBehaviour {
 
 		if (CrossPlatformInputManager.GetButton("Fire1")) {
 			//Playback
+			recording = false;
 			foreach (ReplaySystem recObject in recordedOjects) {
 				recObject.PlayBack ();
-				Debug.Log (recObject.gameObject);
 			}
 		} else {
 			//Recording
